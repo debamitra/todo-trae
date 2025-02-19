@@ -37,7 +37,7 @@ interface TaskStats {
 }
 
 const Analytics = () => {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState<TaskStats>({
     totalTasks: 0,
