@@ -7,12 +7,20 @@ import { supabase } from './supabase';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SideNav from './components/SideNav';
 import Analytics from './components/Analytics';
+import PomodoroModal from './components/PomodoroModal';
 
 interface Todo {
   id: number;
   text: string;
   completed: boolean;
   user_id: string;
+  elapsed_time?: number;
+}
+
+interface PomodoroState {
+  isActive: boolean;
+  timeLeft: number;
+  selectedTaskId: number | null;
 }
 
 function App() {
@@ -20,6 +28,7 @@ function App() {
   const [todos, setTodos] = useState<Todo[]>([])
   const [inputValue, setInputValue] = useState('')
   const [loading, setLoading] = useState(true)
+  const [selectedTask, setSelectedTask] = useState<{id: number; text: string} | null>(null)
 
   useEffect(() => {
     if (user) {
@@ -185,7 +194,7 @@ function App() {
                       onChange={() => toggleTodo(todo.id)}
                       className="todo-checkbox"
                     />
-                    <span className="todo-text">{todo.text}</span>
+                    <span className="todo-text" onClick={() => setSelectedTask({ id: todo.id, text: todo.text })}>{todo.text}</span>
                     <div
                       onClick={() => deleteTodo(todo.id)}
                       className="delete-button"
@@ -214,6 +223,14 @@ function App() {
                 ))
               )}
             </ul>
+            {selectedTask && (
+              <PomodoroModal
+                isOpen={true}
+                onClose={() => setSelectedTask(null)}
+                taskId={selectedTask.id}
+                taskText={selectedTask.text}
+              />
+            )}
           </div>
         } />
         <Route path="/analytics" element={<Analytics />} />

@@ -14,6 +14,7 @@ import {
   ChartOptions
 } from 'chart.js';
 import { useState, useEffect } from 'react';
+import './Analytics.css';
 
 ChartJS.register(
   CategoryScale,
