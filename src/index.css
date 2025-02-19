@@ -1,4 +1,3 @@
-/* Global styles */
 :root {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   line-height: 1.5;
@@ -14,12 +13,4 @@
 body {
   min-width: 320px;
   min-height: 100vh;
-}
-
-button {
-  font-family: inherit;
-}
-
-input {
-  font-family: inherit;
 }
