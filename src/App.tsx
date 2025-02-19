@@ -16,9 +16,10 @@ interface Todo {
 }
 
 function App() {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const [todos, setTodos] = useState<Todo[]>([])
   const [inputValue, setInputValue] = useState('')
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     if (user) {
@@ -28,6 +29,7 @@ function App() {
 
   const fetchTodos = async () => {
     try {
+      setLoading(true);
       const { data, error } = await supabase
         .from('todos')
         .select('*')
@@ -38,6 +40,8 @@ function App() {
       setTodos(data || []);
     } catch (error) {
       console.error('Error fetching todos:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -145,7 +149,12 @@ function App() {
               </div>
             </form>
             <ul className="todo-list">
-              {todos.length === 0 ? (
+              {loading ? (
+                <div className="empty-state">
+                  <div className="loading-spinner" />
+                  <p>Loading tasks...</p>
+                </div>
+              ) : todos.length === 0 ? (
                 <div className="empty-state">
                   <svg
                     width="200"
