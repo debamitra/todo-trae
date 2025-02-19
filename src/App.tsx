@@ -112,7 +112,6 @@ function App() {
           <div className="app">
             <div className="header">
               <h1>Todo List</h1>
-              <button onClick={logout} className="logout-button">Logout</button>
             </div>
             <form onSubmit={handleAddTodo} className="todo-form">
               <div className="input-wrapper">

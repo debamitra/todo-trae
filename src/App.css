@@ -141,6 +141,9 @@ body {
   top: 0;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
   z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .nav-links {
@@ -494,6 +497,49 @@ body {
     max-width: 100%;
     min-height: 100vh;
     padding: 1rem;
+  }
+
+  .side-nav {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 1rem;
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 0;
+    gap: 1rem;
+  }
+
+  .logout-button {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 20px;
+    background-color: #f56565;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .logout-button:active {
+    transform: translateY(-48%);
+    background-color: #e53e3e;
+  }
+
+  .logout-button svg {
+    width: 16px;
+    height: 16px;
   }
 
   .analytics {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../supabase';
 import { Line } from 'react-chartjs-2';
@@ -13,6 +13,7 @@ import {
   Legend,
   ChartOptions
 } from 'chart.js';
+import { useState, useEffect } from 'react';
 
 ChartJS.register(
   CategoryScale,
@@ -213,7 +214,6 @@ const Analytics = () => {
     <div className="app">
       <div className="header">
         <h1>Analytics Dashboard</h1>
-        <button onClick={logout} className="logout-button">Logout</button>
       </div>
       <div className="analytics">
         {loading ? (
