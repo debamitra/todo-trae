@@ -17,11 +17,7 @@ interface Todo {
   elapsed_time?: number;
 }
 
-interface PomodoroState {
-  isActive: boolean;
-  timeLeft: number;
-  selectedTaskId: number | null;
-}
+
 
 function App() {
   const { user } = useAuth();
